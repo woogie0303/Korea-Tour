@@ -30,22 +30,22 @@ export const StaticStateCarouselWrapper = styled.div`
   width: 40%;
 `;
 
-export const StaticStateCarouselBox = styled.div`
+export const StaticStateCarouselBox = styled.ul`
   display: flex;
   overflow: hidden;
   border-radius: 1rem;
 `;
 
-export const StaticStateItems = styled.ul`
+export const StaticStateItems = styled.li`
   width: 100%;
   color: rgb(28, 23, 80, 0.3);
   background-color: #dfdfdf;
   flex-shrink: 0;
   transition: all 0.5s ease-in-out;
-  transform: ${props => "translateX(-" + props.count * 100 + "%)"};
+  transform: ${props => "translateX(-" + props.$count * 100 + "%)"};
 `;
 
-export const StaticStateItem = styled.li`
+export const StaticStateItem = styled.div`
   font-size: 1.6rem;
   padding: 1.3rem 2rem;
   cursor: pointer;
@@ -78,7 +78,7 @@ export const StaticGraphWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  width: ${props => (props.showNotification ? "100%" : "")};
+  width: ${props => (props.$showNotification ? "100%" : "")};
   align-items: center;
   & > svg {
     width: 100%;
@@ -106,9 +106,9 @@ export const StaticVisitTypeBox = styled.div`
     width: 0.8rem;
     height: 0.8rem;
     background-color: ${props =>
-      props.touDiv === "현지인"
+      props.$touDiv === "현지인"
         ? "#4d4d4d"
-        : props.touDiv === "외지인"
+        : props.$touDiv === "외지인"
         ? "#ff665e"
         : "#a8a8ff"};
   }

@@ -45,6 +45,7 @@ export const HomeImgTitleBox = styled.div`
 
 export const HomeContentContainer = styled.div`
   width: 50%;
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 4rem 6rem;

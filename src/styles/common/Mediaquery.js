@@ -5,6 +5,8 @@ import {
   HomeContentContainer,
   HomeImgWrapper,
 } from "../Home/Home";
+import { TourNavLists, TourNavWrapper } from "../Tour/TourNavbar";
+import { TourContainer, TourGridWrapper } from "../Tour/Tour";
 
 export const Mobile = ({ children }) => {
   const isMobile = useMediaQuery({
@@ -18,7 +20,6 @@ export const PC = ({ children }) => {
   const isPC = useMediaQuery({
     query: "(min-width:787px)",
   });
-  console.log(isPC);
 
   return <>{isPC && children}</>;
 };
@@ -39,5 +40,13 @@ export const MobileContainer = styled.div`
     & > div {
       border-bottom-right-radius: 0;
     }
+  }
+
+  ${TourNavLists} {
+    width: 100%;
+  }
+
+  ${TourGridWrapper} {
+    grid-template-columns: repeat(3, 18rem);
   }
 `;

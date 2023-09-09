@@ -2,6 +2,8 @@ import * as S from "../../styles/Home/Home.js";
 import Navbar from "../../components/Home/Navbar.jsx";
 import ExplorePart from "../../components/Home/ExplorePart";
 import Static from "../../components/Home/Static.jsx";
+import Bookmark from "../../components/common/Bookmark.jsx";
+import { useState } from "react";
 
 const STATE_CODE = [
   { state: "서울특별시", areaCode: 11 },
@@ -23,7 +25,12 @@ const STATE_CODE = [
   { state: "제주특별자치도", areaCode: 50 },
 ];
 
-const Home = () => {
+const HomePage = () => {
+  const [bookmarkShow, setBookmarkShow] = useState(false);
+
+  const bookmarkShowHandler = () => {
+    setBookmarkShow(pre => !pre);
+  };
   return (
     <S.HomeContainer>
       <S.HomeImgWrapper>
@@ -34,12 +41,16 @@ const Home = () => {
         </S.HomeImgTitleBox>
       </S.HomeImgWrapper>
       <S.HomeContentContainer>
-        <Navbar list={["Explore", "Bookmark"]} />
-        <ExplorePart stateArr={STATE_CODE} />
+        <Navbar bookmarkHandler={bookmarkShowHandler} />
+        <ExplorePart />
         <Static stateArr={STATE_CODE} />
+        <Bookmark
+          bookmarkHandler={bookmarkShowHandler}
+          bookmarkShow={bookmarkShow}
+        />
       </S.HomeContentContainer>
     </S.HomeContainer>
   );
 };
 
-export default Home;
+export default HomePage;

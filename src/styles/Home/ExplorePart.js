@@ -29,8 +29,8 @@ export const ExploreCarousel = styled.div`
   gap: 2rem;
 `;
 
-export const ExploreCarouselImgWrapper = styled.div`
-  background: ${props => `url(${props.imgSrc}) no-repeat`};
+export const ExploreCarouselImgWrapper = styled.li`
+  background: ${props => `url(${props.$imgSrc}) no-repeat`};
   position: relative;
   display: flex;
   justify-content: center;

@@ -6,7 +6,7 @@ const Notification = ({ type, title, message }) => {
     <S.NotificationWrapper>
       {type === "Loading" ? (
         <>
-          <S.NotificationLoading></S.NotificationLoading>{" "}
+          <S.NotificationLoading />
           <p>
             {title}: {message}
           </p>

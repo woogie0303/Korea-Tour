@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const dims = [300, 160];
 
 const StaticGraph = props => {
-  const visitItems = useSelector(state => state.visit.items);
+  const visitItems = useSelector(state => state.items.fetchItems);
   if (visitItems.length === 0) return;
 
   const y = scaleLinear()
@@ -13,8 +13,8 @@ const StaticGraph = props => {
     .domain([0, max(visitItems, d => d.touNum)]);
 
   const scale = scaleBand()
-    .domain(visitItems.map(d => d.touDiv))
     .range([0, dims[0]])
+    .domain(visitItems.map(d => d.touDiv))
     .padding(0.3);
 
   const width = scale.bandwidth();

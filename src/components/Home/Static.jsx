@@ -8,12 +8,14 @@ import StaticGraph from "./StaticGraph";
 import Notification from "../common/Notification";
 
 const Static = props => {
-  const visitItems = useSelector(state => state.visit.items);
+  const visitItems = useSelector(state => state.items.fetchItems);
   const stateRef = useRef([]);
   const dispatch = useDispatch();
   const selectStateHandler = (state, i) => {
-    stateRef.current.forEach(data => data.classList.remove("active"));
-    stateRef.current[i].classList.add("active");
+    stateRef.current.forEach(
+      data => (data.className = data.className.replace(" active", ""))
+    );
+    stateRef.current[i].className += " active";
 
     dispatch(fetchVisitData(state));
   };
@@ -64,10 +66,10 @@ const Static = props => {
   }, []);
 
   useEffect(() => {
-    stateRef.current[0]?.classList.add("active");
+    if (stateRef.current[0]) {
+      stateRef.current[0].className += " active";
+    }
   }, [stateData]);
-
-  console.log(showStaticState.visitChart);
 
   return (
     <S.StaticContainer>
@@ -79,8 +81,12 @@ const Static = props => {
       <S.StaticMain>
         <S.StaticStateCarouselWrapper>
           <S.StaticStateCarouselBox>
-            {stateData.map(d => {
-              return <S.StaticStateItems count={count}>{d}</S.StaticStateItems>;
+            {stateData.map((d, i) => {
+              return (
+                <S.StaticStateItems key={i} $count={count}>
+                  {d}
+                </S.StaticStateItems>
+              );
             })}
           </S.StaticStateCarouselBox>
           <S.StaticStateCarouselButton>
@@ -89,7 +95,7 @@ const Static = props => {
           </S.StaticStateCarouselButton>
         </S.StaticStateCarouselWrapper>
 
-        <S.StaticGraphWrapper showNotification={showStaticState.notification}>
+        <S.StaticGraphWrapper $showNotification={showStaticState.notification}>
           {showStaticState.notification && (
             <Notification
               type={notification.type}
@@ -98,11 +104,11 @@ const Static = props => {
             />
           )}
 
-          {showStaticState.visitChart && (
+          {showStaticState.showComponent && (
             <>
               <S.StaticVisitTypeGroup>
                 {visitItems.map(d => (
-                  <S.StaticVisitTypeBox touDiv={d.touDiv}>
+                  <S.StaticVisitTypeBox $touDiv={d.touDiv}>
                     <span>{d.touDiv}</span>
                   </S.StaticVisitTypeBox>
                 ))}

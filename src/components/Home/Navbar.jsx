@@ -1,16 +1,11 @@
 import * as S from "../../styles/Home/Navbar";
 import { ReactComponent as Menu } from "../../assets/imgs/menu.svg";
-import LoginBtn from "./LoginBtn";
 
-const Navbar = props => {
+const Navbar = ({ bookmarkHandler }) => {
   return (
     <S.Navbar>
-      <Menu />
       <S.NavbarList>
-        {props.list.map(d => (
-          <li>{d}</li>
-        ))}
-        <LoginBtn />
+        <li onClick={bookmarkHandler}>Bookmark</li>
       </S.NavbarList>
     </S.Navbar>
   );

@@ -5,18 +5,18 @@ const uiSlice = createSlice({
   initialState: {
     showState: {
       notification: false,
-      visitChart: false,
+      showComponent: false,
     },
 
     notification: null,
   },
   reducers: {
-    showVisitChart(state) {
+    showItems(state) {
       state.showState.notification = false;
-      state.showState.visitChart = true;
+      state.showState.showComponent = true;
     },
     showNotification(state, action) {
-      state.showState.visitChart = false;
+      state.showState.showComponent = false;
       state.showState.notification = true;
       state.notification = {
         type: action.payload.type,
