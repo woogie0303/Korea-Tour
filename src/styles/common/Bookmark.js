@@ -60,8 +60,4 @@ export const BookmarkItem = styled.li`
     right: 1.5rem;
     top: 1rem;
   }
-
-  p {
-    font-size: 2rem;
-  }
 `;
