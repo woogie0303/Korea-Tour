@@ -17,6 +17,7 @@ export const HomeImgWrapper = styled.div`
   background-size: cover;
   border-top-right-radius: 5rem;
   border-bottom-right-radius: 5rem;
+  color: red;
 `;
 
 export const HomeImgTitleBox = styled.div`
